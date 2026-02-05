@@ -125,8 +125,6 @@ public class TodosTest {
     @BeforeEach
     public void setUp3() {
 
-        // Добавляем несколько задач для тестирования,
-
     }
 
 //    @Test
