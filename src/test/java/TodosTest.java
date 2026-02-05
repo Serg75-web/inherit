@@ -90,7 +90,7 @@ public class TodosTest {
         // Выполняем поиск по запросу "Java"
         Task[] actual = todos.search("Java");
 
-        // Ожидаем, что результат будет содержать только epic1 и epic3
+        // Ожидаем, что результат будет содержать лишь epic1 и epic3
         Task[] expected = {epic1, epic3};
 
         // Проверяем, что результат соответствует ожиданиям
