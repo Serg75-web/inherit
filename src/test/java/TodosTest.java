@@ -122,35 +122,116 @@ public class TodosTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-//    @BeforeEach
-//    public void setUp3() {
+
+    @Test
+    public void searchMeetingsByExactMatch() {
+
+        Todos todos1 = new Todos();
+
+        // Создаем экземпляры Meeting
+        Meeting meet1 = new Meeting(1, "Купить молоко", "Выкатка второй версии приложения", "Во вторник после обеда");
+        Meeting meet2 = new Meeting(2, "Купить яйца", "Использование сайта", "Во вторник после обеда");
+        Meeting meet3 = new Meeting(3, "Сделать домашнюю работу", "Уборка", "Во вторник после обеда");
+        Meeting meet4 = new Meeting(4, "Купить хлеб", "Выучить предлоги", "Во вторник после обеда");
+
+        // Добавляем встречи в todos
+        todos1.add(meet1);
+        todos1.add(meet2);
+        todos1.add(meet3);
+        todos1.add(meet4);
+
+        // Выполняем поиск по точному запросу
+        Task[] actual = todos1.search("Купить молоко");
+
+        // Ожидаем, что результат будет массивом с одной задачей "Купить молоко"
+        Task[] expected = { meet1 };
+
+        // Сравниваем ожидаемый и фактический результат
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchMeetingsByExactMatch1() {
+
+        Todos todos1 = new Todos();
+
+        // Создаем экземпляры Meeting
+        Meeting meet1 = new Meeting(1, "Купить молоко", "Выкатка второй версии приложения", "Во вторник после обеда");
+        Meeting meet2 = new Meeting(2, "Купить яйца", "Использование сайта", "Во вторник после обеда");
+        Meeting meet3 = new Meeting(3, "Сделать домашнюю работу", "Уборка", "Во вторник после обеда");
+        Meeting meet4 = new Meeting(4, "Купить хлеб", "Выучить предлоги", "Во вторник после обеда");
+
+        // Добавляем встречи в todos
+        todos1.add(meet1);
+        todos1.add(meet2);
+        todos1.add(meet3);
+        todos1.add(meet4);
+
+        // Выполняем поиск по точному запросу
+        Task[] actual = todos1.search("Купить яйца");
+
+        // Ожидаем, что результат будет массивом с одной задачей "Купить молоко"
+        Task[] expected = { meet2 };
+
+        // Сравниваем ожидаемый и фактический результат
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchMeetingNoMatch() {
+
+        Todos todos1 = new Todos();
+
+        // Создаем экземпляры Meeting
+        Meeting meet1 = new Meeting(1, "Купить молоко", "Выкатка второй версии приложения", "Во вторник после обеда");
+        Meeting meet2 = new Meeting(2, "Купить яйца", "Использование сайта", "Во вторник после обеда");
+        Meeting meet3 = new Meeting(3, "Сделать домашнюю работу", "Уборка", "Во вторник после обеда");
+        Meeting meet4 = new Meeting(4, "Купить хлеб", "Выучить предлоги", "Во вторник после обеда");
+
+        // Добавляем встречи в todos
+        todos1.add(meet1);
+        todos1.add(meet2);
+        todos1.add(meet3);
+        todos1.add(meet4);
+
+        // Выполняем поиск по точному запросу
+        Task[] actual = todos1.search("Продать");
+
+        // Ожидаем, что результат будет отсутствовать
+        Task[] expected = {};
+
+        // Сравниваем ожидаемый и фактический результат
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchMeetingsByExactMatch3() {
+
+        Todos todos1 = new Todos();
+
+        // Создаем экземпляры Meeting
+        Meeting meet1 = new Meeting(1, "Купить молоко", "Выкатка второй версии приложения", "Во вторник после обеда");
+        Meeting meet2 = new Meeting(2, "Купить яйца", "Использование сайта", "Во вторник после обеда");
+        Meeting meet3 = new Meeting(3, "Сделать домашнюю работу", "Уборка", "Во вторник после обеда");
+        Meeting meet4 = new Meeting(4, "Купить хлеб", "Выучить предлоги", "Во вторник после обеда");
+
+        // Добавляем встречи в todos
+        todos1.add(meet1);
+        todos1.add(meet2);
+        todos1.add(meet3);
+        todos1.add(meet4);
+
+        // Выполняем поиск по запросу
+        Task[] actual = todos1.search("Купить");
+
+        // Ожидаем, что результат содержится в следующих массивах
+        Task[] expected = {meet1, meet2, meet4};
+
+        // Сравниваем ожидаемый и фактический результат
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 }
-
-//    @Test
-//    public void searchMeetingsByExactMatch() {
-//        // Создаем экземпляры Meeting
-//        Meeting meet1 = new Meeting(1, "Купить молоко", "Выкатка второй версии приложения", "Во вторник после обеда");
-//        Meeting meet2 = new Meeting(2, "Купить яйца", "Использование сайта", "Во вторник после обеда");
-//        Meeting meet3 = new Meeting(3, "Сделать домашнюю работу", "Уборка", "Во вторник после обеда");
-//        Meeting meet4 = new Meeting(4, "Купить хлеб", "Выучить предлоги", "Во вторник после обеда");
-//
-//        // Добавляем встречи в todos
-//        todos.add(meet1);
-//        todos.add(meet2);
-//        todos.add(meet3);
-//        todos.add(meet4);
-//
-//        // Выполняем поиск по точному запросу
-//        Task[] actual = todos.search("Купить молоко");
-//
-//        // Ожидаем, что результат будет массивом с одной задачей "Купить молоко"
-//        Task[] expected = { meet1 };
-//
-//        // Сравниваем ожидаемый и фактический результат
-//        Assertions.assertArrayEquals(expected, actual);
-//    }
-
 
 
 
